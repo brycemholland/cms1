@@ -1,11 +1,9 @@
 var GreeterMessage = React.createClass({
   render: function(){
-    var name = this.props.name;
-    var message = this.props.message;
     return (
       <div>
-        <h1>Hello {name}!</h1>
-        <p>{message}</p>
+        <h1>Hello {this.props.name}!</h1>
+        <p>{this.props.message}</p>
       </div>
     );
   }
@@ -36,7 +34,7 @@ var Greeter = React.createClass({
   getDefaultProps: function(){
     return {
       name: 'friend',
-      message: 'Thank you for coming.'
+      message: 'This is the default message.'
     }
   },
   getInitialState: function(){
@@ -52,7 +50,7 @@ var Greeter = React.createClass({
   render: function () {
     return (
       <div>
-        <GreeterMessage name={name} message={this.props.message}/>
+        <GreeterMessage name={this.state.name} message={this.props.message}/>
         <GreeterForm onNewName={this.handleNewName}/>
       </div>
     );
@@ -60,7 +58,7 @@ var Greeter = React.createClass({
 });
 
 var firstName = 'Bryce';
-var myMessage = 'This is from the component!';
+var myMessage = 'This is from myMessage!';
 
 ReactDOM.render(
   <Greeter name={firstName} message={myMessage}/>,
